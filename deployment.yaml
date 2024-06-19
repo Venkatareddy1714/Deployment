@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-app
+  labels:
+    app: sample-app
+spec:
+  replicas: 3  # Number of replicas (pods) to run for this deployment
+  selector:
+    matchLabels:
+      app: sample-app  # Labels to match pods controlled by this deployment
+  template:
+    metadata:
+      labels:
+        app: sample-app  # Labels attached to pods created by this deployment
+    spec:
+      containers:
+      - name: sample-app-container  # Name of the container within the pod
+        image: your-registry/your-image:latest  # Replace with your actual image details
+        ports:
+        - containerPort: 8080  # Port your application listens on inside the container
+        # Add additional container configuration as needed (env variables, volumes, etc.)
